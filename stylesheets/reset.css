@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul, ol {
+  list-style: none;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+*[data-lang='ko'] {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+img, svg {
+  vertical-align: top;
+}
+a {
+  color: inherit;
+}
+textarea:focus, input:focus {
+  outline: none;
+}
+textarea {
+  resize: none;
+}
+button {
+  border: 0;
+}
