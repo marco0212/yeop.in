@@ -1,0 +1,37 @@
+@media screen and (max-width: 480px) {
+  :root {
+    --content-width: auto;
+  }
+  body {
+    padding: 0 15px;
+  }
+  h3 {
+    font-size: 30px;
+  }
+  h4 {
+    font-size: 18px;
+    margin-bottom: 21px;
+  }
+  .navigator {
+    top: 30px;
+    right: 15px;
+  }
+  .lobby h1 {
+    line-height: 1.1;
+  }
+  .project-list .thumb-area {
+    margin-right: 0;
+    margin-bottom: 21px;
+  }
+  .project-list > li {
+    margin-bottom: 80px;
+    flex-direction: column;
+  }
+  .project-list .thumb-area img {
+    width: 100%;
+    height: auto;
+  }
+  .project-list .description-area .inline-list.skills {
+    margin-bottom: 10px;
+  }
+}
