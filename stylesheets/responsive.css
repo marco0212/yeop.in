@@ -34,4 +34,10 @@
   .project-list .description-area .inline-list.skills {
     margin-bottom: 10px;
   }
+  .writing-list li {
+    flex-direction: column;
+  }
+  .writing-list li h4 {
+    margin-bottom: 0;
+  }
 }
