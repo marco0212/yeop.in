@@ -1,113 +1,117 @@
-import Image from 'next/image'
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main className="lobby">
+      <h1>
+        Jeong
+        <br />
+        in yeop
+      </h1>
+      <p>Lazy and whimsical developer</p>
+      <span></span>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      {/* <section>
+        <h3>Projects</h3>
+        <ul className="project-list">
+          <li>
+            <div className="thumb-area">
+              <Image
+                src="/assets/o2damn.png"
+                width={450}
+                height={300}
+                alt="O2damn"
+              />
+            </div>
+            <div className="description-area">
+              <header>
+                <h4>O2damn</h4>
+                <a href="https://o2damn.fun" target="_blank">
+                  https://o2damn.fun
+                </a>
+              </header>
+              <ul className="inline-list skills">
+                <li>React</li>
+                <li>Canvas</li>
+                <li>Firebase</li>
+              </ul>
+              <p data-lang="ko">
+                O2Damn은 누구나 쉽게 즐길 수 있는 웹 기반 리듬 게임입니다.
+                키보드 인터페이스 어플리케이션으로 Space bar, 방향키, S, D, F,
+                J, K, L 를 사용해 조작할 수 있습니다. 음악에 맞춰 내려오는
+                키노트를 맞춰 높은 점수를 획득하고 점수를 랭크에 등록하세요!
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Writings</h3>
+        <ul className="writing-list">
+          <li>
+            <h4>
+              <a
+                target="_blank"
+                href="https://velog.io/@inyeop/Avoid-Reflow-Repaint"
+                data-lang="ko"
+              >
+                Avoid Reflow Repaint
+              </a>
+            </h4>
+            <time>Thursday, September 15th 2022</time>
+          </li>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <li>
+            <h4>
+              <a
+                target="_blank"
+                href="https://velog.io/@inyeop/Critical-Rendering-Path"
+                data-lang="ko"
+              >
+                Critical Rendering Path
+              </a>
+            </h4>
+            <time>Thursday, August 4th 2022</time>
+          </li>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          <li>
+            <h4>
+              <a
+                target="_blank"
+                href="https://velog.io/@inyeop/%ED%87%B4%EC%82%AC-%ED%9B%84-6%EA%B0%9C%EC%9B%94-%ED%9A%8C%EA%B3%A0%EB%A1%9D"
+                data-lang="ko"
+              >
+                퇴사 후 6개월 회고록 🌪
+              </a>
+            </h4>
+            <time>Sunday, July 24th 2022</time>
+          </li>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+          <li>
+            <h4>
+              <a
+                target="_blank"
+                href="https://velog.io/@inyeop/%EB%A6%AC%EB%93%AC%EA%B2%8C%EC%9E%84-O2damn-%EA%B0%9C%EB%B0%9C%EA%B8%B0"
+                data-lang="ko"
+              >
+                리듬게임 O2damn 개발기 🎮
+              </a>
+            </h4>
+            <time>Tuesday, July 21th 2022</time>
+          </li>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <li>
+            <h4>
+              <a
+                target="_blank"
+                href="https://medium.com/vanilla-coding/%EC%9D%B4%EC%A7%81-%EC%84%B1%EA%B3%B5-%EC%9D%B8%ED%84%B0%EB%B7%B0-6-%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84-7%EA%B8%B0-%EC%9D%B8%EC%97%BD-%EB%8B%98%EC%9D%98-%EC%8A%A4%ED%86%A0%EB%A6%AC-46c5143b8845"
+                data-lang="ko"
+              >
+                이직 성공 인터뷰 #6: 부트캠프 7기, 인엽 님의 스토리. 🧑‍💻
+              </a>
+            </h4>
+            <time>Saturday, July 24th 2021</time>
+          </li>
+        </ul>
+      </section> */}
     </main>
-  )
+  );
 }
