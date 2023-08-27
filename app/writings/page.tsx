@@ -1,37 +1,13 @@
+import { LIST_WRITING } from "@/libs/dummy";
 import { format } from "date-fns";
 import Link from "next/link";
 
-type Tag = "work" | "book" | "journal" | "dev";
-
-type Post = {
-  id: string;
-  title: string;
-  content: string;
-  tags: Tag[];
-  createdAt: string;
-};
-
-const writings: Post[] = [
-  {
-    id: "1",
-    title: "세이노의 가르침",
-    content: "hello world!!",
-    tags: ["book"],
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: "1",
-    title: "세이노의 가르침",
-    content: "hello world!!",
-    tags: ["book"],
-    createdAt: new Date().toISOString(),
-  },
-];
+const writings = LIST_WRITING;
 
 export default function Writings() {
   return (
     <main>
-      <header className="mb-10">
+      <header className="mb-5">
         <h2 className="text-[38px] text-gray300 mb-3">Writings</h2>
         <p className="text-gray100 text-[20px]">
           내가 겪은 것, 읽은 것, 본 것에 대해 느낀 점을 적은 글입니다.
@@ -62,8 +38,8 @@ export default function Writings() {
                 <h3 className="text-[24px] text-gray200 font-bold">
                   {writing.title}
                 </h3>
-                <p className="h-[42px] overflow-hidden text-100">
-                  {writing.content.repeat(25).repeat(5)}
+                <p className="h-[42px] overflow-hidden text-100 whitespace-pre-line">
+                  {writing.summary}
                 </p>
                 <time className="text-gray200">
                   {format(
