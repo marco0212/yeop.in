@@ -20,6 +20,9 @@ export default function RootLayout({
             <li>
               <Link href="/">Home</Link>
             </li>
+            <li>
+              <Link href="/writings">Writings</Link>
+            </li>
           </ul>
         </nav>
         {children}

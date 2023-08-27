@@ -54,31 +54,9 @@ body {
 section {
   background-color: #fff;
 }
-h3 {
-  font-size: 38px;
-  color: #333;
-  margin-bottom: 50px;
-  font-weight: 400;
-}
-h4 {
-  font-size: 21px;
-  color: #444;
-}
-h5 {
-  font-size: 18px;
-  color: #444;
-  margin-bottom: 21px;
-}
-h6 {
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 10px;
-}
 
 .navigator {
-  position: absolute;
-  top: 50px;
-  right: 0;
+  margin-top: 50px;
 }
 .navigator ul {
   display: flex;
@@ -94,7 +72,7 @@ h6 {
   text-decoration: none;
 }
 .lobby {
-  height: 100vh;
+  height: calc(100vh - 161px);
   display: flex;
   flex-direction: column;
   justify-content: center;
