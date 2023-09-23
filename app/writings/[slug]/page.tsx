@@ -4,6 +4,11 @@ import { format } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+export async function generateStaticParams() {
+  const writings = await writingResolver.writings();
+  return writings.map((writing) => writing.slug);
+}
+
 export default async function WritingDetail({
   params: { slug },
 }: {
