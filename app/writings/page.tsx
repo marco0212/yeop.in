@@ -1,4 +1,4 @@
-import { writingResolver } from "@/libs/resolvers";
+import { writingResolver } from "@libs/resolvers";
 import { format } from "date-fns";
 import Link from "next/link";
 

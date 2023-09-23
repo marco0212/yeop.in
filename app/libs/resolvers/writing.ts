@@ -1,8 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
-import { Writing } from "../type";
 import matter from "gray-matter";
-import { isNotEmpty } from "../shared-util";
+import { isNotEmpty } from "@libs/shared-util";
+import { Writing } from "@libs/type";
 
 class WritingResolver {
   private writingPath = "./writings";

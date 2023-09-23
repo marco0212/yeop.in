@@ -1,5 +1,5 @@
-import { writingResolver } from "@/libs/resolvers";
-import { MarkdownRenderer } from "@/libs/shared-ui/MarkdownRenderer/ReactMarkdown";
+import { writingResolver } from "@libs/resolvers";
+import { MarkdownRenderer } from "@libs/shared-ui";
 import { format } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
