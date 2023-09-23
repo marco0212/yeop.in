@@ -5,7 +5,7 @@ import { isNotEmpty } from "@libs/shared-util";
 import { Writing } from "@libs/type";
 
 class WritingResolver {
-  private writingPath = "./writings";
+  private writingPath = path.join(process.cwd(), "./writings");
 
   public async writings() {
     const writings = await fs.readdir(this.writingPath);
