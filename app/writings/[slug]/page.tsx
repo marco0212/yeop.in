@@ -1,10 +1,19 @@
-import { SINGLE_WRITING } from "@/libs/dummy";
+import { writingResolver } from "@/libs/resolvers";
 import { MarkdownRenderer } from "@/libs/shared-ui/MarkdownRenderer/ReactMarkdown";
 import { format } from "date-fns";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
-export default function WritingDetail() {
-  const writing = SINGLE_WRITING;
+export default async function WritingDetail({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
+  const writing = await writingResolver.writing(slug);
+
+  if (!writing) {
+    return notFound();
+  }
 
   return (
     <main className="flex flex-col gap-12">
@@ -28,7 +37,7 @@ export default function WritingDetail() {
             <span className="text-gray100">정인엽</span>
             <i>·</i>
             <time>
-              {format(new Date(writing.createdAt), "yyyy년 MM월 dd일 HH:mm")}
+              {format(new Date(writing.createdAt), "yyyy년 MM월 dd일")}
             </time>
           </p>
         </div>

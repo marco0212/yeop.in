@@ -1,0 +1,1 @@
+export { writingResolver } from "./writing";

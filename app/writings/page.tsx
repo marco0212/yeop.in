@@ -1,10 +1,10 @@
-import { LIST_WRITING } from "@/libs/dummy";
+import { writingResolver } from "@/libs/resolvers";
 import { format } from "date-fns";
 import Link from "next/link";
 
-const writings = LIST_WRITING;
+export default async function Writings() {
+  const writings = await writingResolver.writings();
 
-export default function Writings() {
   return (
     <main>
       <header className="mb-5">
@@ -17,11 +17,11 @@ export default function Writings() {
       <ul>
         {writings.map((writing) => (
           <li
-            key={writing.id}
+            key={writing.slug}
             className="py-10 border-b-2 border-gray100/20 last:border-0"
           >
             <Link
-              href={`writings/${writing.id}`}
+              href={`writings/${writing.slug}`}
               className="flex flex-col gap-4"
             >
               <div className="flex gap-2 ">
@@ -38,14 +38,11 @@ export default function Writings() {
                 <h3 className="text-[24px] text-gray200 font-bold">
                   {writing.title}
                 </h3>
-                <p className="h-[42px] overflow-hidden text-100 whitespace-pre-line">
-                  {writing.summary}
+                <p className="max-h-[42px] overflow-hidden text-100 whitespace-pre-line h">
+                  {writing.description}
                 </p>
                 <time className="text-gray200">
-                  {format(
-                    new Date(writing.createdAt),
-                    "yyyy년 MM월 dd일 HH:mm"
-                  )}
+                  {format(new Date(writing.createdAt), "yyyy년 MM월 dd일")}
                 </time>
               </div>
             </Link>
