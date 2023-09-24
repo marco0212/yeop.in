@@ -1,10 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  Noto_Sans_KR,
-  Black_Han_Sans as Bungee_Inline,
-} from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 
 const noto_sans = Noto_Sans_KR({
   variable: "--font-noto",
