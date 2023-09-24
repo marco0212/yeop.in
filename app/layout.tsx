@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -29,6 +30,7 @@ export default function RootLayout({
         <footer>
           <p>&copy; Copyright {new Date().getFullYear()} Jeong</p>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
