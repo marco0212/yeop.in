@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-default: var(--font-noto), -apple-system, "san-serif";
+}
+
+body {
+  font-family: var(--font-default);
+  font-size: 16px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,12 +19,6 @@
 ul,
 ol {
   list-style: none;
-}
-body {
-  font-family: "Pretendard JP", Pretendard, system-ui, -apple-system,
-    BlinkMacSystemFont, Roboto, "Helvetica Neue", "Segoe UI", "Noto Sans KR",
-    "Malgun Gothic", sans-serif;
-  font-size: 14px;
 }
 
 img,
@@ -102,7 +105,6 @@ footer {
   padding: 30px;
 }
 
-/* 임시 저장 스타일 */
 .project-list > li {
   display: flex;
   align-items: center;
