@@ -1,41 +1,31 @@
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Noto_Sans_KR } from "next/font/google";
+import { Grandstander } from "next/font/google";
+import { PropsWithChildren } from "react";
+import { Gnb } from "@components";
 
-const noto_sans = Noto_Sans_KR({
-  variable: "--font-noto",
-  weight: ["400"],
+const font = Grandstander({
+  variable: "--grandstander",
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "yeop.in",
-  description: "어쩌다 이런 누추한 곳에 들리게 되셨습니까?",
+  description: "소프트웨어 개발자 정인엽의 다용도 블로그",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="ko" className={noto_sans.variable}>
+    <html lang="ko" className={font.variable}>
       <body>
-        <nav className="navigator">
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/writings">Writings</Link>
-            </li>
-          </ul>
-        </nav>
-        {children}
-        <footer>
-          <p>&copy; Copyright {new Date().getFullYear()} Jeong</p>
+        <Gnb />
+        <main>{children}</main>
+        <footer className="container mt-14 py-5">
+          <p className="text-center">
+            &copy; Copyright {new Date().getFullYear()} Jeong
+          </p>
         </footer>
         <Analytics />
       </body>
