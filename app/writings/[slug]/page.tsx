@@ -1,5 +1,5 @@
 import { writingResolver } from "@libs/resolvers";
-import { MarkdownRenderer } from "@libs/shared-ui";
+import { Body, Heading, MarkdownRenderer, SkewBlock } from "@libs/shared-ui";
 import { format } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -23,33 +23,41 @@ export default async function WritingDetail({
   }
 
   return (
-    <main className="flex flex-col gap-12">
-      <header className="flex flex-col gap-2">
-        <div className="flex gap-2 ">
-          {writing.tags.map((tag) => (
-            <span
-              className="border-2 border-primary px-2 inline-block text-white leading-loose text-primary"
-              key={tag}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <h2 className="text-[38px] text-gray300 mb-3">{writing.title}</h2>
-        <div className="flex items-center gap-4">
-          <div className="rounded-full overflow-hidden w-[30px] h-[30px]">
-            <Image width={30} height={30} src="/assets/me.jpg" alt="me!" />
+    <div className="flex flex-col gap-8">
+      <SkewBlock>
+        <header className="flex flex-col gap-4">
+          <div className="flex gap-3">
+            {writing.tags.map((tag) => (
+              <div
+                key={tag}
+                className="px-2 py-1 border-white border-2 rounded-md"
+              >
+                <Body level={1} weight="500">
+                  {tag}
+                </Body>
+              </div>
+            ))}
           </div>
-          <p className="flex items-center gap-1">
-            <span className="text-gray100">정인엽</span>
-            <i>·</i>
-            <time>
-              {format(new Date(writing.createdAt), "yyyy년 MM월 dd일")}
-            </time>
-          </p>
-        </div>
-      </header>
-      <MarkdownRenderer source={writing.content} />
-    </main>
+          <Heading level={1} weight="500">
+            {writing.title}
+          </Heading>
+          <div className="flex items-center gap-4">
+            <div className="rounded-full overflow-hidden w-[30px] h-[30px]">
+              <Image width={30} height={30} src="/assets/me.jpg" alt="me!" />
+            </div>
+            <div className="flex items-center gap-1">
+              <Body level={1}>정인엽</Body>
+              <Body level={1}>·</Body>
+              <Body level={1}>
+                {format(new Date(writing.createdAt), "yyyy년 MM월 dd일")}
+              </Body>
+            </div>
+          </div>
+        </header>
+      </SkewBlock>
+      <div className="container">
+        <MarkdownRenderer source={writing.content} />
+      </div>
+    </div>
   );
 }

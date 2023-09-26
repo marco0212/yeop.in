@@ -7,11 +7,25 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      primary: "#03a9f4",
-      gray100: "#666",
-      gray200: "#444",
-      gray300: "#333",
+    fontFamily: {
+      display: ["var(--grandstander)", "-apple-system", "san-serif"],
+    },
+    screens: {
+      sm: "480px",
+      md: "768px",
+    },
+    container: {
+      center: true,
+      padding: "10px",
+      screens: {
+        sm: "480px",
+        md: "768px",
+      },
+    },
+    extend: {
+      colors: {
+        primary: "#fedb8b",
+      },
     },
   },
   plugins: [],
