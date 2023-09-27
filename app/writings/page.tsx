@@ -14,9 +14,8 @@ export default async function Writings() {
             Writings
           </Heading>
           <Body level={1}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the standard dummy text ever since
-            the 1500s, when an unknown printer.
+            I primarily write articles on development, journal, and lessons
+            aimed at being remembered for a long time.
           </Body>
         </div>
       </SkewBlock>

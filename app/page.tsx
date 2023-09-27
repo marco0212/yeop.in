@@ -16,9 +16,9 @@ export default async function Home() {
           </Heading>
 
           <Body level={1}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the standard dummy text ever since
-            the 1500s, when an unknown printer.
+            I am a software developer with a specialization in front-end. I have
+            primarily worked at startups 🚀 Now I&apos;m working as a JavaScript
+            developer at D.whale provides the service Clap.
           </Body>
         </div>
       </SkewBlock>
