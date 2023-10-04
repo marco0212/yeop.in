@@ -35,7 +35,11 @@ class WritingResolver {
           new Date(prev.createdAt).getTime()
       );
 
-    return filtered;
+    return new Promise<Writing[]>((resolve) => {
+      setTimeout(() => {
+        resolve(filtered);
+      }, 5000);
+    });
   }
 
   public async writing(slug: string) {
