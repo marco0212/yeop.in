@@ -61,11 +61,9 @@ Server Component를 사용하면 번들 파일 사이즈를 유의미하게 줄�
 
 번들 파일은 무엇일까?
 
-일반적으로 Next.js를 통해 렌더링될 때는 pre-rendering 과정에서 생성된 결과물 HTML과 js 파일을 응답으로 받게 된다. HTML은 브라우저에서 UI를 그저 표시하기 위한 목적으로 미리 만들어진 결과물이기 때문에 사용자에게 UI를 보일 수는 있어요 클릭이나 각종 인터렉션은 불가능한 상태이다. 이런 불완전한 상태의 컴포넌트를 완전하게 만들어주기 위해서는 수화(hydration) 과정이 필요한데 이 과정을 처리해 주는 것이 번들 파일이다.
+일반적으로 Next.js를 통해 렌더링될 때는 pre-rendering 과정에서 생성된 결과물 HTML과 js 파일을 응답으로 받게 된다. HTML은 브라우저에서 UI를 그저 표시하기 위한 목적으로 미리 만들어진 결과물이기 때문에 사용자에게 UI를 보일 수는 있어도 클릭이나 각종 인터렉션은 불가능한 상태이다. 이런 불완전한 상태의 컴포넌트를 완전하게 만들어주기 위해서는 수화(hydration) 과정이 필요한데 이 과정을 처리해 주는 것이 번들 파일이다.
 
 기존의 Client Component는 번들 파일에 의해 온전한 컴포넌트로 처리 과정을 거쳐야 하기 때문에 컴포넌트가 의존하는 모든 js 파일들이 번들에 포함되어야만 한다.
-
-<!-- Image: Screenshot of source tab including dependency packages, component, util functions etc. -->
 
 이 번들에는 사용된 컴포넌트와 각종 함수들을 포함해 컴포넌트가 의존하는 여러 라이브러리들까지 포함되어야 한다. 즉 pre-rendering된 결과물과는 별개로 컴포넌트를 온전하게 만들기 위해서는 js 번들 파일에 의해 후속 처리가 되어야 한다는 말이다.
 
@@ -73,6 +71,10 @@ Server Component를 사용하면 번들 파일 사이즈를 유의미하게 줄�
 
 ## 마치며
 
-이번 Next.js의 Server Component를 학습하며 예전에 사용했던 php나 Node.js의 템플릿 엔진과 유사한 거 같다는 느낌을 물씬 느꼈다. 과거 Jquery를 사용해 웹 개발을 하다 React와 같은 UI 라이브러리의 등장으로 패러다임이 완전히 바뀌었다고 생각했었는데 다시 Server Side Rendering으로 변화했고 특히 이번 Server Component는 꽤 과거와 유사한 방식으로 또 변화하고 있는 것처럼 보였다. 이러한 현상을 보니 `아 기술의 큰 흐름은 계속 도는구나` 그리고 `현재 문제의 솔루션은 어쩌면 과거에 있을 수 있겠구나` 하는 생각이 드는 시간이었다.
+이번 Next.js의 Server Component를 학습하며 예전에 사용했던 php나 Node.js의 템플릿 엔진과 유사한 거 같다는 느낌은 받았다. 과거 Jquery를 사용해 웹 개발을 하다 React와 같은 UI 라이브러리의 등장으로 패러다임이 완전히 바뀌었다고 생각했었는데 Next.js나 Remix와 같은 도구의 등장으로 다시 Server Side Rendering으로 변화했고 특히 이번에 소개한 Server Component는 과거의 방식으로 돌아가고 있는 것처럼 보인다. 이러한 현상을 보니 `아 기술의 큰 흐름은 계속 도는구나` 그리고 `현재 문제의 솔루션은 어쩌면 과거에 있을 수 있겠구나` 하는 생각이 드는 시간이었다.
 
 > Times are evolving, things get better. Even though it might look like things are oscillating back and forth, they are, in fact, moving forward:
+>
+> reference: [https://tkdodo.eu/blog/you-might-not-need-react-query](https://tkdodo.eu/blog/you-might-not-need-react-query)
+
+<img width="531" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/d8bb8749-f425-434e-8d15-63c3d7749653">
