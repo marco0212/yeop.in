@@ -77,4 +77,4 @@ Server Component를 사용하면 번들 파일 사이즈를 유의미하게 줄�
 >
 > reference: [https://tkdodo.eu/blog/you-might-not-need-react-query](https://tkdodo.eu/blog/you-might-not-need-react-query)
 
-<img width="531" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/d8bb8749-f425-434e-8d15-63c3d7749653">
+<img width="531" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/d8bb8749-f425-434e-8d15-63c3d7749653" />

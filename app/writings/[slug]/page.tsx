@@ -1,8 +1,9 @@
 import { writingResolver } from "@libs/resolvers";
-import { Body, Heading, MarkdownRenderer, SkewBlock } from "@libs/shared-ui";
+import { Body, Heading, SkewBlock } from "@libs/shared-ui";
 import { format } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { MdxRenderer } from "./feat-ui";
 
 export async function generateStaticParams() {
   const writings = await writingResolver.writings();
@@ -56,7 +57,7 @@ export default async function WritingDetail({
         </header>
       </SkewBlock>
       <div className="container">
-        <MarkdownRenderer source={writing.content} />
+        <MdxRenderer>{writing.content}</MdxRenderer>
       </div>
     </div>
   );
