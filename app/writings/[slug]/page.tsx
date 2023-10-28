@@ -1,5 +1,5 @@
 import { writingResolver } from "@libs/resolvers";
-import { Body, Heading, MarkdownRenderer, SkewBlock } from "@libs/shared-ui";
+import { Body, Heading, SkewBlock } from "@libs/shared-ui";
 import { format } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
