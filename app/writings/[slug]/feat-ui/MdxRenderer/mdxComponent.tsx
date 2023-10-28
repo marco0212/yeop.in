@@ -2,7 +2,6 @@ import { Code } from "bright";
 import { MDXComponents } from "mdx/types";
 import { Body } from "@libs/shared-ui";
 import Link from "next/link";
-import Image from "next/image";
 
 export const mdxComponents: MDXComponents = {
   a: ({ children, href }) => {
@@ -12,7 +11,7 @@ export const mdxComponents: MDXComponents = {
       <Link
         href={href || ""}
         target={isExternal ? "_blank" : undefined}
-        className="font-bold hover:underline"
+        className="hover:underline text-blue-500"
       >
         {children}
       </Link>
