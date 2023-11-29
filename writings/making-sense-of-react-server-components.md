@@ -28,7 +28,7 @@ React가 처음 소개되어 개발 커뮤니티를 놀랍게 만든 후 10년�
 
 React Server Components를 이해하기 위해 Server Side Rendering(SSR)이 어떻게 동작하는지 이해하는 것이 도움이 될 것입니다. 만약 SSR이 익숙하다면 다음 순서의 글로 넘어가도 무방합니다!
 
-제가 React를 사용하기 시작한 2015년도에는 대부분 `client-side` 렌더링을 채택하였습니다. 사용자는 아래와 같은 HTML 파일을 응답 받았었습니다.
+제가 React를 사용하기 시작한 2015년도에는 대부분 `client-side-rendering`을 채택하였습니다. 사용자는 아래와 같은 HTML 파일을 응답 받았었습니다.
 
 ```html
 <!DOCTYPE html>
@@ -40,20 +40,20 @@ React Server Components를 이해하기 위해 Server Side Rendering(SSR)이 어
 </html>
 ```
 
-`bundle.js`는 React와 서드파티 라이브러리 그리고 우리가 작성한 모든 코드들은 포함하고 있는, 어플리케이션을 mount하고 실행하기 위한 script를 포함하고 있습니다.
+`bundle.js`는 어플리케이션을 mount하고 실행하기 위해 react와 서드파티 라이브러리 그리고 우리가 작성한 모든 코드들은 포함하고 있습니다.
 
 일단 JS가 다운로드되고 파싱되면 React가 실행되어 전체 어플리케이션에 대한 모든 DOM 노드를 생성하고 이를 빈 `<div id="root">`에 구성합니다.
 
 이 접근 방식의 문제점은 모든 작업을 수행하는데 시간이 걸린다는 것입니다. 위 일련의 일이 진행되는 동안 사용자는 텅 빈 화면을 바라봐야 합니다. 이 문제는 어플리케이션이 커짐에 따라 악화되는 경향이 있습니다.
 
-우리가 제공하는 새로운 기능은 Javascript 번들에 더 많은 kilobyte를 추가하여 사용자가 기다려야 하는 시간을 연장시키게 됩니다.
+우리가 추가한 새로운 기능은 Javascript 번들에 더 많은 코드를 추가하여 사용자가 기다려야 하는 시간을 연장시키게 됩니다.
 
 > 물론 이를 최적화할 수 있는 방법이 존재합니다. 특정 모듈을 lazy-loading 하거나 각 route를 기반으로 code split을 하는 방법 등이 있습니다.
 > 하지만 일반적으로 코드가 늘어감에 따라 번들의 사이즈는 점점 늘어가게 될 것입니다.
 
 Server Side Rendering은 이러한 경험을 개선하게끔 설계되었습니다. 텅 빈 HTML 파일을 전달하는 대신, 실제 HTML을 서버에서 생성해서 렌더링되도록 합니다. 그로인해 사용자는 형식이 모두 갖춰진 HTML 문서를 전달받을 수 있습니다.
 
-하지만 React가 클라이언트에서 실행되어야 하기 때문에 여전히 `<script>`태그가 HTML 파일에 포함되어야만 합니다. 하지만 우리는 브라우저 내에서 약간 다르게 동작하도록 React를 구성했습니다. 모든 DOM 노드를 처음부터 만드는 대신 기존 HTML에 활용해 React화 시키도록이요. 이 과정을 hydration이라고 합니다.
+하지만 React가 클라이언트에서 실행되어야 하기 때문에 여전히 `<script>`태그가 HTML 파일에 포함되어야만 합니다. 하지만 우리는 브라우저 내에서 약간 다르게 동작하도록 React를 구성했습니다. 모든 DOM 노드를 처음부터 만드는 대신 기존 HTML에 활용해 React화 시키도록이요. 이 과정을 `hydration`이라고 합니다.
 
 React 코어 팀 멤버인 Dan Abramov는 다음과 같이 설명했습니다.
 
@@ -76,7 +76,7 @@ JS 번들이 다운로드 되면 React는 전체 어플리케이션을 빠르게
 >
 > 일반적으로 React 어플리케이션은 JSX를 순수한 JS로 가공되어야 하고 모든 모듈을 번들링하는 등 컴파일 작업이 되어야만 합니다. 만약 모든 경로에 대해 모든 HTML을 "pre-rendered" 했다면 어떻게 될까요?
 >
-> 이것이 일반적으로 알려져 있는 static site generation입니다. 이는 Server Side Rendering 방식 중 하나 입니다.
+> 이것이 일반적으로 알려져 있는 static site generation(SSG)입니다. 이것 또한 Server Side Rendering 방식 중 하나 입니다.
 >
 > Server Side Rendering은 여러 렌더링 전략을 포함하는 포괄적인 용어입니다. 이들 모두 초기 렌더링은 ReactDOMServer API를 사용해 Node.js와 같은 서버 런타임에서 발생합니다. 어떤 쪽이든 이들은 모두 Server Side Rendering입니다.
 
@@ -97,7 +97,9 @@ JS 번들이 다운로드되고 파싱되면 React 앱은 수많은 DOM 노드�
 
 아마 이런 페턴을 많이 보셨을 겁니다. 예를 들어 UberEats는 실제 레스토랑을 채우는데 필요한 데이터를 가져오는 동안 shell을 렌더링하는 것으로 시작합니다.
 
-https://github.com/marco0212/yeop.in/assets/50050459/2707a9d0-307e-427b-a338-547dcf2d0b23
+<video controls width="734">
+  <source src="https://github.com/marco0212/yeop.in/assets/50050459/2707a9d0-307e-427b-a338-547dcf2d0b23" />
+</video>
 
 사용자는 네트워크 요청이 마무리되어 실제 컨텐츠가 로딩 UI를 대체할 때까지 이 로딩 상태의 화면을 보게 될 것입니다.
 
@@ -111,13 +113,10 @@ https://github.com/marco0212/yeop.in/assets/50050459/2707a9d0-307e-427b-a338-547
 
 사용자 경험의 차이를 파악하기 위해 그래프에 몇가지 성능 지표를 추가해보겠습니다. 두 흐름 사이 어떤 일이 발생하는지 확인해봅시다.
 
-- Client Side Rendering
-
-<img width="677" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/3f314e50-b947-4ce6-986c-72423de9a178" />
-
-- Server Side Rendering
-
-<img width="677" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/2d86439c-5eab-4997-8e7d-bb55984695d2" />
+| Rendering Strategy    | Flow                                                                                                                            |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Client Side Rendering | <img width="677" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/3f314e50-b947-4ce6-986c-72423de9a178" /> |
+| Server Side Rendering | <img width="677" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/2d86439c-5eab-4997-8e7d-bb55984695d2" /> |
 
 위 지표들은 일반적으로 사용되는 웹 성능 지표입니다.
 
@@ -127,9 +126,9 @@ https://github.com/marco0212/yeop.in/assets/50050459/2707a9d0-307e-427b-a338-547
 
 서버에서 초기 렌더링이 이뤄졌기 때문에 사용자는 shell을 더 빠르게 볼 수 있습니다. 이를 통해 사용자는 진행 상태를 볼 수 있기 때문에 더 좋은 사용 경험을 줄 수 있습니다.
 
-그리고 어떤 상황에서는 이것이 의미있는 개선이 될 수 있습니다. 예를 들어 탐색 링크를 클릭할 수 있도록 헤더가 로드되기를 기다리고 있을 수 있습니다.
+그리고 어떤 상황에서는 이것이 의미있는 개선이 될 수 있습니다. 예를 들어 사용자는 탐색 링크를 클릭할 수 있도록 헤더가 로드되기를 기다리고 있을 수 있습니다.
 
-하지만 조금 이상하지 않나요? SSR 그래프를 보면 요청이 시작된 다는 것을 알 수 있습니다. 두 번째 왕복 네트워크 요청을 요구하는 대신 초기 요청에 데이터베이스 작업을 수행하면 어떨까요?
+하지만 조금 이상하지 않나요? SSR 그래프를 보면 요청이 시작된다는 것을 알 수 있습니다. 두 번째 왕복 네트워크 요청을 요구하는 대신 초기 요청에 데이터베이스 작업을 수행하면 어떨까요?
 
 <img width="743" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/b379022d-55d0-40eb-9084-0a4cf2040230" />
 
@@ -177,6 +176,117 @@ export default function Homepage({ data }) {
 
 1. 이 전략은 오직 route 레벨, 모든 컴포넌트의 최상단에서만 작동합니다. 각 컴포넌트들은 이를 사용할 수 없습니다.
 2. 각 프레임워크는 각자 다른 방식으로 이를 구현하고 있습니다. Next.js와 Gatsby, Remix 등이 있고 이는 표준화되어 있지 않았습니다.
-3. 모든 컴포넌트들은 여전히 클라이언트에서 hydration을 필요로 합니다. 이를 필요로 하지 않는 컴포넌트라고 하더라도요.
+3. 모든 컴포넌트들은 여전히 클라이언트에서 hydration을 필요로 합니다. 설령 hydration이 필요로 하지 않는 컴포넌트라고 하더라도요.
 
 수년 동안 React 팀은 이 문제를 조용히 해결하기 위해 공식적인 방법을 찾으려고 노력했습니다. 이 솔루션의 이름을 **React Server Component**라고 부릅니다.
+
+## Introduction to React Server Components
+
+높은 추상화 수준에서 React Server Components는 새로운 패러다임의 이름입니다. 이 새로운 패러다임 세상에서 우리는 서버에서 독점적으로 실행되는 컴포넌트를 생성할 수 있습니다. 이로인해 컴포넌트 내부에서 데이터베이스를 조회하는 쿼리를 작성하는 일과 같은 것들을 할 수 있습니다.
+
+"Server Component"를 사용한 예시 코드입니다.
+
+```jsx
+import db from "imaginary-db";
+async function Homepage() {
+  const link = db.connect("localhost", "root", "passw0rd");
+  const data = await db.query(link, "SELECT * FROM products");
+  return (
+    <>
+      <h1>Trending Products</h1>
+      {data.map((item) => (
+        <article key={item.id}>
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </>
+  );
+}
+export default Homepage;
+```
+
+수년동안 React를 사용해온 사람으로서 이 코드는 너무 wild 해보였습니다. 😅
+
+"하지만 잠깐만..! 함수형 컴포넌트는 비동기 함수가 될 수 없잖아! 그리고 렌더링 로직에 side effect를 직접적으로 가져서는 안돼!" 저는 경악했습니다.
+
+여기에서 이해해야 할 핵심은 **Server Components는 re-render가 결코 발생되지 않는다는 것**입니다. Server Component는 UI를 생성하기 위해 서버에서 단 한번만 실행됩니다. 렌더링된 값은 클라이언트로 전달되고 이는 lock-in됩니다. React에 의해서는 결코 값이 변경되지 않습니다.
+
+이는 React의 수많은 API가 Server Components와는 호환되지 않는다는 것을 의미합니다. 예를 들어 Server Component는 state를 사용할 수 없습니다. state는 변하지만 Server Component는 re-render가 발생되지 않기 때문이죠. 또 useEffect를 사용할 수 없습니다. effect는 클라이언트에서 렌더링이 된 이후에 한번 발생되지만 Server Component는 결코 클라이언트로 전달되지 않기 때문이죠.
+
+또한 이것은 기존 react의 규칙과 관련해서도 유연함을 가질 수 있다는 것을 의미합니다. 전통적인 React에서는 useEffect 콜백이나 이벤트 핸들러 등 내부에 사이드 이펙트를 넣어서 렌더링될 때마다 발생되지 않도록 해야 했지만 컴포넌트가 단 한번만 호출된다면 더이상 이를 걱정할 필요가 없습니다!
+
+Server Components 자체는 놀라울 정도로 간단하지만 "React Server Component" 패러다임은 꽤 복잡합니다. 우리는 여전히 "일반적인 컴포넌트"를 가지고 있고 서로 결합하는 방식은 혼란을 야기하기 때문이죠.
+
+이 새로운 패러다임에서 우리에게 익숙한 "전통적인 컴포넌트"를 **Client Components** 라고 부릅니다. 사실 저는 이 이름이 마음에 들지는 않습니다. 😅
+
+"Client Component" 라는 이름은 컴포넌트가 클라이언트에서만 렌더링된다는 것을 의미하지만 실제로는 그렇지 않습니다. **Client Component는 클라이언트와 서버 두 곳에서 렌더링됩니다.**
+
+<img width="680" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/6adfe12b-9607-49b1-a87d-c24668ca3843"/>
+
+이런 용어들은 꽤 헷갈립니다. 그래서 요약해보겠습니다.
+
+-> React Server Components는 새로운 패러다임을 위한 이름이다.
+
+-> 이 새로운 패러다임 안에서 "표준이었던" React Component는 Client Component라는 이름으로 리브랜딩되었다.
+
+-> 이 새로운 패러다임은 컴포넌트의 새로운 타입인 Server Component를 가지고 나왔고 얘는 서버에서만 독점적으로 실행된다. 이들의 코드는 JS 번들에 포함되지 않고 hydration과 re-render가 결코 일어나지 않는다.
+
+> React Server Components vs. Server Side Rendering
+>
+> 흔히 혼란스러워 하는 것 중 하나로 React Server Components는 Server Side Rendering을 대체하지 않는다는 것입니다. React Server Components는 "SSR version 2.0"이 아닙니다.
+>
+> 저는 이것을 완벽하게 결합되는 별개의 퍼즐 조각, 서로를 보완하는 두 가지 맛으로 생각할 수 있다고 봅니다.
+>
+> 우리는 초기 HTML을 생성하기 위해 여전히 Server Side Rendering에 의존하고 있습니다. React Server Components는 그 위에 구축되어 클라이언트 측 JS 번들에서 특정 컴포넌트만 생략하여 서버에서만 실행되도록 할 수 있습니다.
+>
+> 실제로 Server Side Rendering 없이 React Server Components를 사용하는 것도 가능하지만 실제로는 함께 사용하면 더 나은 결과를 얻을 수 있습니다. 예를 보고 싶다면 React 팀에서 만든 [minimal RSC demo](https://github.com/reactjs/server-components-demo)를 봐주세요.
+
+## Compatible Environments
+
+보통 React에 새로운 기능이 출시되면 React 의존성을 최신 버전으로 변경하여 기존 프로젝트에 해당 기능을 사용할 수 있습니다. `npm install react@latest`을 실행하면 됩니다.
+
+하지만 React Server Components는 안타깝게도 이런 식으로는 사용할 수 없습니다.
+
+제가 이해한 바에 따르면 React Server Components는 번들러, 서버, 라우터 등 React 외부에 여러 요소들과 긴밀하게 통합되어야만 사용할 수 있습니다.
+
+이 글을 쓰는 동안 React Server Components를 사용하기 위해서는 Next.js 13.4+에서 완전 새롭게 설계된 `App Router`를 사용해야 합니다.
+
+미래에는 더 많은 React 기반의 프레임워크가 React Server Components를 통합하기 시작할 것입니다. React의 기능이 특정 하나의 툴에서만 사용 가능하다는 것은 역시 어색하게 느껴집니다! React 문서에는 React Server Components를 지원하는 프레임워크를 나열하는 "[Bleeding-edge](https://react.dev/learn/start-a-new-react-project#bleeding-edge-react-frameworks)" 섹션이 있습니다. 이 페이지를 확인하며 새로운 옵션이 제공되는지를 확인할 수 있습니다.
+
+## Specifying client components
+
+이 새로운 패러다임 "React Server Components"에서 모든 컴포넌트를 Server Component를 기본으로 간주합니다. Client Component는 옵셔널합니다.
+
+새로운 지시자를 통해 이를 지정할 수 있습니다.
+
+```jsx
+"use client";
+
+import React from "react";
+
+function Counter() {
+  const [count, setCount] = React.useState(0);
+  return (
+    <button onClick={() => setCount(count + 1)}>Current value: {count}</button>
+  );
+}
+
+export default Counter;
+```
+
+최상단에 'use client'라는 문자열은 이 파일의 컴포넌트가 Client Component이며 클라이언트에서 다시 렌더링할 수 있도록 JS 번들에 포함되어야 함을 React에게 알리는 방법입니다.
+
+컴포넌트의 타입을 명시하는 이러한 방식은 상당히 이상하게 보일 수 있지만 이런 종류의 선례는 있습니다. Javascript에서 "Strict Mode"를 선택하는 "use strict" 지시자입니다.
+
+Server Component를 명시하기 위해서 'use server' 지시문을 사용하지는 않습니다. 새로운 패러다임에서는 React Server Components를 기본 컴포넌트 타입으로 처리합니다. 사실 'use server'는 이 블로그 게시물을 벗어나는 완전히 다른 기능이며 서버 작업 시에 사용될 수 있습니다.
+
+> 어떤 컴포넌트가 Client Component가 되어야 하나요?
+>
+> 이 글을 보는 당신은 아마 이 컴포넌트가 서버 컴포넌트여야 하는지 클라이언트 컴포넌트어야 하는지 어떻게 결정해야 할지 궁금할 수 있습니다.
+>
+> 일반적으로 그것이 서버 컴포넌트일 수 있다면 그것은 서버 컴포넌트여야 할 것입니다. Server Component는 추론하기가 간단하고 쉬운 경향이 있습니다. 성능상의 이점도 있고요. Server Component는 클라이언트에서 실행되지 않기 때문에 해당 코드가 Javascript 번들에 포함되지 않습니다. React Server Components 패러다임의 장점 중 하나는 Page Interactive(TTI) 측정 항목을 향상시킬 잠재력이 있다는 것입니다.
+>
+> 이 말이 모든 Client Component를 근절시키는 것을 목표로 해야 한다는 것은 아닙니다! 최소한의 Client Component로 최적화하려고 해서는 안됩니다. 지금까지 모든 React 앱의 컴포넌트는 Client Component였다는 점을 기억할 필요가 있습니다.
+>
+> React Server Components를 사용하면 매우 직관적이라는 것을 알 수 있을 겁니다. 어떤 컴포넌트는 state와 effect를 사용하기 때문에 'use client' 지시문을 작성해서 클라이언트에서 실행되도록 해야 할 것입니다. 그런 경우가 아니라면 Server Component로 남겨둘 수 있습니다.
