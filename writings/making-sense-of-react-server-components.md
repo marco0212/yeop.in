@@ -89,14 +89,7 @@ React에서 이뤄지는 데이터 패치에 대해 이야기 해봅시다. 일�
 
 React Query나 SWR, Apollo와 같은 것을 사용하면 클라이언트는 백엔드에 요청을 발생시키고 이를 시각화한다면 아래와 같은 그림일 겁니다.
 
-<img width="734" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/8f7e9b6c-8f95-4917-b8c7-a32e0ed3b30c">
-
-<!--
-A note about these graphs
-This blog post includes several of these “network request graphs”. They're designed to visualize how data moves between client (browser) and server (back-end API), across several different rendering strategies.
-
-The numbers along the bottom represent an imaginary made-up time unit. They're not minutes or seconds. In reality, the numbers vary wildly, based on a ton of different factors. These graphs are meant to give you a high-level understanding of the concepts, they're not modeling any real data.
--->
+<img width="734" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/8f7e9b6c-8f95-4917-b8c7-a32e0ed3b30c" />
 
 이 그림은 Client Side Rendering(CSR)을 사용할 때 나타나는 흐름입니다. 클라이언트가 HTML을 받는 것에서 시작됩니다. 파일은 아무런 컨텐츠가 없지만 몇개의 `<script>` 태그를 가지고 있습니다.
 
@@ -110,7 +103,7 @@ https://github.com/marco0212/yeop.in/assets/50050459/2707a9d0-307e-427b-a338-547
 
 이를 설계할 수 있는 다른 방법을 살펴봅시다. 다음 그림은 동일한 데이터 패치 패턴을 유지하지만 Client Side Rendering 대신 Server Side Rendering을 사용합니다.
 
-<img width="762" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/2fada331-94d1-43f8-a549-a85a8a07196c">
+<img width="762" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/2fada331-94d1-43f8-a549-a85a8a07196c" />
 
 이 새로운 방식에서는 첫 렌더를 서버에서 수행했습니다. 이것은 유저가 이미 채워져 있는 HTML 파일을 전달 받는다는 것을 의미합니다.
 
@@ -119,11 +112,12 @@ https://github.com/marco0212/yeop.in/assets/50050459/2707a9d0-307e-427b-a338-547
 사용자 경험의 차이를 파악하기 위해 그래프에 몇가지 성능 지표를 추가해보겠습니다. 두 흐름 사이 어떤 일이 발생하는지 확인해봅시다.
 
 - Client Side Rendering
-<img width="677" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/3f314e50-b947-4ce6-986c-72423de9a178">
 
+<img width="677" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/3f314e50-b947-4ce6-986c-72423de9a178" />
 
 - Server Side Rendering
-<img width="677" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/2d86439c-5eab-4997-8e7d-bb55984695d2">
+
+<img width="677" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/2d86439c-5eab-4997-8e7d-bb55984695d2" />
 
 위 지표들은 일반적으로 사용되는 웹 성능 지표입니다.
 
@@ -137,7 +131,7 @@ https://github.com/marco0212/yeop.in/assets/50050459/2707a9d0-307e-427b-a338-547
 
 하지만 조금 이상하지 않나요? SSR 그래프를 보면 요청이 시작된 다는 것을 알 수 있습니다. 두 번째 왕복 네트워크 요청을 요구하는 대신 초기 요청에 데이터베이스 작업을 수행하면 어떨까요?
 
-<img width="743" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/b379022d-55d0-40eb-9084-0a4cf2040230">
+<img width="743" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/b379022d-55d0-40eb-9084-0a4cf2040230" />
 
 클라이언트와 서버를 오가는 대신 초기 요청의 일부로 데이터베이스 쿼리를 수행해서 완전히 채워진 UI를 사용자에게 보내도록 말입니다.
 
@@ -150,11 +144,11 @@ React 생태계는 이에 대한 많은 해결책을 제시했습니다. Next.js
 예를 들어 Next.js는 이런 방식으로 사용할 수 있습니다.
 
 ```jsx
-import db from 'imaginary-db';
+import db from "imaginary-db";
 // This code only runs on the server:
 export async function getServerSideProps() {
-  const link = db.connect('localhost', 'root', 'passw0rd');
-  const data = await db.query(link, 'SELECT * FROM products');
+  const link = db.connect("localhost", "root", "passw0rd");
+  const data = await db.query(link, "SELECT * FROM products");
   return {
     props: { data },
   };
@@ -186,6 +180,3 @@ export default function Homepage({ data }) {
 3. 모든 컴포넌트들은 여전히 클라이언트에서 hydration을 필요로 합니다. 이를 필요로 하지 않는 컴포넌트라고 하더라도요.
 
 수년 동안 React 팀은 이 문제를 조용히 해결하기 위해 공식적인 방법을 찾으려고 노력했습니다. 이 솔루션의 이름을 **React Server Component**라고 부릅니다.
-
-
-
