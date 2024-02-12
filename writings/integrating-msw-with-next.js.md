@@ -38,7 +38,7 @@ What import alias would you like configured? @/* (Whatever you want)
 프로젝트 설정을 마치고 필요한 의존성을 모두 설치하였다면 msw 적용을 확인할 수 있도록 API를 호출하는 간단한 어플리케이션을 구축해보자.
 어플리케이션의 모습은 아래와 같다. 선택한 버튼에 따라 각 성별의 유저를 렌더링하는 간단한 어플리케이션이다.
 
-<img width="635" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/f657f097-5944-4f06-8fb0-3f6a06b11c5c">
+<img width="635" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/f657f097-5944-4f06-8fb0-3f6a06b11c5c" />
 
 서버와 논의를 통해 유저를 조회하는 API의 end point는 `/api/users`로 정하게 되었다고 가정해보자. api는 gender를 파라미터로 받을 수 있도록 구현된다고 한다.
 이를 구현한다면 아래와 같은 코드가 될 것이다.
@@ -117,7 +117,7 @@ import { handlers } from "./handler";
 export const worker = setupWorker(...handlers);
 ```
 
-끝으로 Next.js 어플리케이션이 실행될 때 MSW가 실행될 수 있도록 _app.tsx 파일에 호출 코드를 추가한다
+끝으로 Next.js 어플리케이션이 실행될 때 MSW가 실행될 수 있도록 \_app.tsx 파일에 호출 코드를 추가한다
 
 ```tsx
 // _app.tsx
@@ -131,11 +131,11 @@ if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
 export default function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }
-
 ```
-하지만 확인해보니 여전히 404 에러가 발생되고 있다. 
 
-<img width="924" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/ef818392-81f6-4647-9176-93b4590fc30d">
+하지만 확인해보니 여전히 404 에러가 발생되고 있다.
+
+<img width="924" alt="image" src="https://github.com/marco0212/yeop.in/assets/50050459/ef818392-81f6-4647-9176-93b4590fc30d" />
 
 이유는 실행 순서에 있다. API를 모킹하기 위해서는 worker 모듈을 불러오고 start 메서드가 호출된 이후에 api를 호출해야 하는데 현재는 실행 순서가 보장이 되지 않고 있기 때문에 초기 페이지 렌더링에서 호출하는 API를 모킹이 적용되지 않는 것이다. 이를 해결하기 위해서는 mocking이 활성화된 이후에 API를 호출할 수 있도록 처리를 해주어야 한다.
 
@@ -182,7 +182,6 @@ export default function App({ Component, pageProps }: AppProps) {
     </MswConfig>
   );
 }
-
 ```
 
 이후 다시 브라우저를 확인해본다면 유저 조회 API 모킹이 잘 동작하는 것을 확인할 수 있다. worker 모듈을 불러오고 start 메서드가 실행된 이후에야 `enableMsw` 상태가 true로 변경되기 때문에 msw 실행 이후 API를 호출하도록 순서가 보장이 되었기 때문이다.
@@ -193,6 +192,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
 ## Conclusion
 
-최근 조직내에 MSW를 사용해 모킹 시스템을 구축하게 되었다. 간단한 작업이었지만 각 개발 환경에서 mocking 데이터가 충돌하지 않게 하기 위한 형상 관리 관련 정책 논의나 pre-rendering에 영향을 주지 않게 하기 위한 처리 등 신경 써야 할 요소들이 꽤 있는 일감이어서 정리를 해두고 싶다는 생각이 들게 되었다. 
+최근 조직내에 MSW를 사용해 모킹 시스템을 구축하게 되었다. 간단한 작업이었지만 각 개발 환경에서 mocking 데이터가 충돌하지 않게 하기 위한 형상 관리 관련 정책 논의나 pre-rendering에 영향을 주지 않게 하기 위한 처리 등 신경 써야 할 요소들이 꽤 있는 일감이어서 정리를 해두고 싶다는 생각이 들게 되었다.
 
 이제 더이상 서버 개발자에게 API 언제 배포되냐고 묻지 않아도 되어 기쁘다.
